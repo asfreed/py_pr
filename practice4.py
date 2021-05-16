@@ -9,16 +9,19 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.datasets import *
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
+
 X, y_true = make_blobs(n_samples=500, centers=4, cluster_std=0.40, random_state=0)
 plt.scatter(X[:, 0], X[:, 1], s=50)
 plt.show()
 kmeans = KMeans(n_clusters=4)
 kmeans.fit(X)
 y_kmeans = kmeans.predict(X)
+
 plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
 centers = kmeans.cluster_centers_
 plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5);
 plt.show()
+
 
 style.use("ggplot")
 centers = [[2, 2], [4, 5], [3, 10]]
@@ -62,6 +65,7 @@ plt.show()
 def Image_display(i):
     plt.imshow(digit['images'][i], cmap='Greys_r')
     plt.show()
+    
 digit = load_digits()
 digit_d = pd.DataFrame(digit['data'][0:1600])
 Image_display(0)
